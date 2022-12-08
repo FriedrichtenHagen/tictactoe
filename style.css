@@ -1,3 +1,6 @@
+:root{
+    --gameBoardwidth: 500px;
+}
 body{
     margin: 0px;
     padding: 0px;
@@ -9,12 +12,15 @@ body{
 }
 .gameBoard{
     background-color: beige;
-    height: 500px;
-    width: 500px;
+    height: var(--gameBoardwidth);
+    width: var(--gameBoardwidth);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
 }
 .gameField{
     border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    font-size: calc(var(--gameBoardwidth)/4);
 }
