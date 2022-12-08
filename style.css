@@ -1,0 +1,20 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.gameBoard{
+    background-color: beige;
+    height: 500px;
+    width: 500px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+.gameField{
+    border: 1px solid black;
+}
