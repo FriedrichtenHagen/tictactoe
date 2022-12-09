@@ -37,6 +37,7 @@ const displayControl = (() => {
                         //field.removeEventListener("click", makeMark)
                     }
                 }
+                checkForDraw()
                 checkForWin()
             }
         }
@@ -70,7 +71,19 @@ const displayControl = (() => {
             alert("win!")
         }
     }
-    return {createField, addEvents, validClickCounter}
+    const checkForDraw = () => {
+        let drawCounter = 0
+            for(let i=0; i<gameBoard.fieldArray.length; i++){
+                if(gameBoard.fieldArray[i]!==" "){
+                    drawCounter++
+                }  
+            }
+        if(drawCounter === 9){
+            alert("draw")
+        } 
+        return {drawCounter}
+    }
+    return {createField, addEvents, checkForDraw}
 })();
 
 displayControl.createField()
@@ -81,15 +94,7 @@ displayControl.addEvents()
 
 if(validClickCounter%2==!0||validClickCounter===0) (uneven number) it is player1 turn
 
-add function that checks for win or draw
-if(gameBoard.fieldArray[0]==="x"&&gameBoard.fieldArray[1]==="x"&&gameBoard.fieldArray[2]==="x"){game over!}
-
-012
-345
-678
-
-
-remove eventlistener after click
+prevent win and draw from being triggered at the same time
 
 
 
