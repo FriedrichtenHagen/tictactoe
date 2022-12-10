@@ -37,8 +37,9 @@ const displayControl = (() => {
                         //field.removeEventListener("click", makeMark)
                     }
                 }
-                checkForDraw()
-                checkForWin()
+                if(!checkForWin()){
+                    checkForDraw()
+                }
             }
         }
         gameFields.forEach((field, index) => field.addEventListener("click", makeMark(field, index)))
@@ -69,6 +70,7 @@ const displayControl = (() => {
             (gameBoard.fieldArray[6]==="o"&&gameBoard.fieldArray[4]==="o"&&gameBoard.fieldArray[2]==="o")
         ){
             alert("win!")
+            return true
         }
     }
     const checkForDraw = () => {
