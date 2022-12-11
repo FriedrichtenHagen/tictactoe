@@ -24,3 +24,12 @@ body{
     justify-content: center;
     font-size: calc(var(--gameBoardwidth)/4);
 }
+.resultMessage{
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+.resultMessageActive{
+    display: block;
+}

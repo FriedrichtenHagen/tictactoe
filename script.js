@@ -1,6 +1,7 @@
 const gameBoard = (() => {
     const fieldArray = [" "," "," "," "," "," "," "," "," "];
-    return {fieldArray}
+    const gameActive = true
+    return {fieldArray, gameActive}
 })();
 
 const player = (name) => {
@@ -14,6 +15,7 @@ const player2 = player("Johannes");
 
 const displayControl = (() => {
     const gameFields = document.querySelectorAll(".gameField")
+    const resultMessage = document.querySelector("resultMessage")
     const createField = () => {
         for(let i=0; i<gameFields.length; i++){
             gameFields[i].textContent = gameBoard.fieldArray[i]
@@ -70,6 +72,8 @@ const displayControl = (() => {
             (gameBoard.fieldArray[6]==="o"&&gameBoard.fieldArray[4]==="o"&&gameBoard.fieldArray[2]==="o")
         ){
             alert("win!")
+            gameBoard.gameActive = false
+            resultMessage.classList.add("resultMessageActive")
             return true
         }
     }
@@ -85,7 +89,10 @@ const displayControl = (() => {
         } 
         return {drawCounter}
     }
-    return {createField, addEvents, checkForDraw}
+    const deactivateField = () => {
+        gameFields.forEach((field, index) => field.removeEventListener("click", makeMark)) //not working
+    }
+    return {createField, addEvents, checkForDraw, deactivateField}
 })();
 
 displayControl.createField()
@@ -94,10 +101,8 @@ displayControl.addEvents()
 /* 
 
 
-if(validClickCounter%2==!0||validClickCounter===0) (uneven number) it is player1 turn
-
-prevent win and draw from being triggered at the same time
-
+highlight the winning combination?
+display win message
 
 
 */
