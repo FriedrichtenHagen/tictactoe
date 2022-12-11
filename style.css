@@ -24,12 +24,28 @@ body{
     justify-content: center;
     font-size: calc(var(--gameBoardwidth)/4);
 }
-.resultMessage{
+.modal{
+    backdrop-filter: blur(10px);
+    width: 100vw;
+    height: 100vh;
     display: none;
     position: absolute;
-    left: 50%;
-    top: 50%;
 }
-.resultMessageActive{
-    display: block;
+.modalActive{
+    display: flex;
+}
+.resultMessage{
+    position: absolute;
+    width: calc(var(--gameBoardwidth));
+    height: calc(var(--gameBoardwidth));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 2s ease-in-out;
+    font-size: 4rem;
+    transform: scale(0);
+    z-index: 1;
+}
+.resultMessage.modalActive{
+    transform: scale(1);
 }

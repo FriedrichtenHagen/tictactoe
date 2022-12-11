@@ -15,7 +15,9 @@ const player2 = player("Johannes");
 
 const displayControl = (() => {
     const gameFields = document.querySelectorAll(".gameField")
-    const resultMessage = document.querySelector("resultMessage")
+    const modal = document.querySelector(".modal")
+    const resultMessage = document.querySelector(".resultMessage")
+
     const createField = () => {
         for(let i=0; i<gameFields.length; i++){
             gameFields[i].textContent = gameBoard.fieldArray[i]
@@ -71,9 +73,10 @@ const displayControl = (() => {
             (gameBoard.fieldArray[0]==="o"&&gameBoard.fieldArray[4]==="o"&&gameBoard.fieldArray[8]==="o")||
             (gameBoard.fieldArray[6]==="o"&&gameBoard.fieldArray[4]==="o"&&gameBoard.fieldArray[2]==="o")
         ){
-            alert("win!")
             gameBoard.gameActive = false
-            resultMessage.classList.add("resultMessageActive")
+            modal.classList.add("modalActive")
+            resultMessage.classList.add("modalActive")
+            
             return true
         }
     }
