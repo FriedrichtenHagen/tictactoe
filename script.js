@@ -106,6 +106,9 @@ displayControl.addEvents()
 
 highlight the winning combination?
 display win message
-
+    show which player won
+    close modal on click
+        clear field (empty array and field)
+        
 
 */
