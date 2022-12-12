@@ -29,10 +29,10 @@ const displayControl = (() => {
             return function curriedFunc(e){
                 if(gameBoard.fieldArray[index]===" "){           
                     if(validClickCounter%2===0||validClickCounter===0){
-                            field.textContent= "x"
-                            gameBoard.fieldArray[index] = "x"
-                            validClickCounter++
-                            //field.removeEventListener("click", makeMark)
+                        field.textContent= "x"
+                        gameBoard.fieldArray[index] = "x"
+                        validClickCounter++
+                        //field.removeEventListener("click", makeMark)
                     }
                     else{
                         field.textContent= "o"
@@ -40,6 +40,7 @@ const displayControl = (() => {
                         validClickCounter++
                         //field.removeEventListener("click", makeMark)
                     }
+                    field.classList.add("filled")
                 }
                 if(!checkForWin()){
                     checkForDraw()
@@ -109,6 +110,6 @@ display win message
     show which player won
     close modal on click
         clear field (empty array and field)
-        
+
 
 */

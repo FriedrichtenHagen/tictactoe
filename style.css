@@ -22,6 +22,10 @@ body{
     border: 1px solid black;
     display: flex;
     justify-content: center;
+    transition: 1s ease-in-out;
+    font-size: 0px;
+}
+.filled{
     font-size: calc(var(--gameBoardwidth)/4);
 }
 .modal{
