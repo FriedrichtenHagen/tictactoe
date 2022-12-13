@@ -1,6 +1,11 @@
 :root{
     --gameBoardwidth: 500px;
 }
+@media only screen and (max-width: 900px) {
+    body {
+        --gameBoardwidth: 100vw;
+    }
+  }
 body{
     margin: 0px;
     padding: 0px;
