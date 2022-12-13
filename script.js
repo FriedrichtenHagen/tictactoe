@@ -113,6 +113,7 @@ const displayControl = (() => {
         // empty fields
         gameFields.forEach((field) => {
             field.textContent = ""
+            field.classList.remove("filled")
         })
         // deactivate modal
         modal.classList.remove("modalActive")
@@ -131,11 +132,7 @@ displayControl.addEvents()
 
 
 highlight the winning combination?
-display win message
-    close modal on click
-        clear field (empty array and field)
-
 bug: previously filled fields are not animated on entrance
-idea: make score counter
-
+make score counter
+add draw message
 */
