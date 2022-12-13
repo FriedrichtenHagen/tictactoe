@@ -25,7 +25,7 @@ const displayControl = (() => {
     }
 
     let validClickCounter = 0;
-    
+
     const addEvents = () => {
         let makeMark = function(field, index){
             return function curriedFunc(e){
@@ -106,6 +106,21 @@ const displayControl = (() => {
     const deactivateField = () => {
         gameFields.forEach((field, index) => field.removeEventListener("click", makeMark)) //not working
     }
+
+    const restartGame = () => {
+        // empty array
+        gameBoard.fieldArray = [" "," "," "," "," "," "," "," "," "];
+        // empty fields
+        gameFields.forEach((field) => {
+            field.textContent = ""
+        })
+        // deactivate modal
+        modal.classList.remove("modalActive")
+        resultMessage.classList.remove("modalActive")
+    }
+    modal.addEventListener("click", restartGame)
+    resultMessage.addEventListener("click", restartGame)
+
     return {createField, addEvents, checkForDraw, deactivateField}
 })();
 
@@ -120,5 +135,7 @@ display win message
     close modal on click
         clear field (empty array and field)
 
+bug: previously filled fields are not animated on entrance
+idea: make score counter
 
 */
