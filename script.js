@@ -23,7 +23,9 @@ const displayControl = (() => {
             gameFields[i].textContent = gameBoard.fieldArray[i]
         }
     }
+
     let validClickCounter = 0;
+    
     const addEvents = () => {
         let makeMark = function(field, index){
             return function curriedFunc(e){
@@ -61,7 +63,15 @@ const displayControl = (() => {
             (gameBoard.fieldArray[2]==="x"&&gameBoard.fieldArray[5]==="x"&&gameBoard.fieldArray[8]==="x")||
             // diagonal x
             (gameBoard.fieldArray[0]==="x"&&gameBoard.fieldArray[4]==="x"&&gameBoard.fieldArray[8]==="x")||
-            (gameBoard.fieldArray[6]==="x"&&gameBoard.fieldArray[4]==="x"&&gameBoard.fieldArray[2]==="x")||
+            (gameBoard.fieldArray[6]==="x"&&gameBoard.fieldArray[4]==="x"&&gameBoard.fieldArray[2]==="x")){
+                // activate modal
+                modal.classList.add("modalActive")
+                resultMessage.classList.add("modalActive")
+                // enter win Message
+                resultMessage.textContent = `x wins!`
+                return true
+            }
+            else if(
             // horizontal o
             (gameBoard.fieldArray[0]==="o"&&gameBoard.fieldArray[1]==="o"&&gameBoard.fieldArray[2]==="o")||
             (gameBoard.fieldArray[3]==="o"&&gameBoard.fieldArray[4]==="o"&&gameBoard.fieldArray[5]==="o")||
@@ -72,13 +82,13 @@ const displayControl = (() => {
             (gameBoard.fieldArray[2]==="o"&&gameBoard.fieldArray[5]==="o"&&gameBoard.fieldArray[8]==="o")||
             // diagonal o 
             (gameBoard.fieldArray[0]==="o"&&gameBoard.fieldArray[4]==="o"&&gameBoard.fieldArray[8]==="o")||
-            (gameBoard.fieldArray[6]==="o"&&gameBoard.fieldArray[4]==="o"&&gameBoard.fieldArray[2]==="o")
-        ){
-            gameBoard.gameActive = false
-            modal.classList.add("modalActive")
-            resultMessage.classList.add("modalActive")
-            
-            return true
+            (gameBoard.fieldArray[6]==="o"&&gameBoard.fieldArray[4]==="o"&&gameBoard.fieldArray[2]==="o")){
+                // activate modal
+                modal.classList.add("modalActive")
+                resultMessage.classList.add("modalActive")
+                // enter win Message
+                resultMessage.textContent = `o wins!`
+                return true
         }
     }
     const checkForDraw = () => {
@@ -107,7 +117,6 @@ displayControl.addEvents()
 
 highlight the winning combination?
 display win message
-    show which player won
     close modal on click
         clear field (empty array and field)
 
