@@ -12,8 +12,23 @@ body{
     width: 100vw;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+header{
+    width: var(--gameBoardwidth);
+    display: flex;
+    justify-content: space-between;
+}
+.displayScoreX, .displayScoreY{
+    padding: 15px;
+    font-size: 2rem;
+    display: flex;
+}
+.scoreX, .scoreY{
+    font-size: inherit;
+
 }
 .gameBoard{
     background-color: beige;

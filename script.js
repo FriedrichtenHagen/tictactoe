@@ -132,7 +132,7 @@ displayControl.addEvents()
 
 
 highlight the winning combination?
-bug: previously filled fields are not animated on entrance
+
 make score counter
 add draw message
 */
