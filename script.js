@@ -6,8 +6,8 @@ const gameBoard = (() => {
 
 const player = (name) => {
     this.name = name;
-    this.turn = true; 
-    return {name, turn}
+    this.score = 0;
+    return {name, score}
 }
 const player1 = player("Fred");
 const player2 = player("Johannes");
@@ -69,6 +69,7 @@ const displayControl = (() => {
                 resultMessage.classList.add("modalActive")
                 // enter win Message
                 resultMessage.textContent = `x wins!`
+                player1.score++
                 return true
             }
             else if(
@@ -88,6 +89,7 @@ const displayControl = (() => {
                 resultMessage.classList.add("modalActive")
                 // enter win Message
                 resultMessage.textContent = `o wins!`
+                player2.score++
                 return true
         }
     }
@@ -122,6 +124,8 @@ const displayControl = (() => {
     modal.addEventListener("click", restartGame)
     resultMessage.addEventListener("click", restartGame)
 
+    // function for displaying score
+
     return {createField, addEvents, checkForDraw, deactivateField}
 })();
 
@@ -134,5 +138,6 @@ displayControl.addEvents()
 highlight the winning combination?
 
 make score counter
+    display in header
 add draw message
 */
