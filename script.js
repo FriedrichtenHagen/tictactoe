@@ -17,6 +17,8 @@ const displayControl = (() => {
     const gameFields = document.querySelectorAll(".gameField")
     const modal = document.querySelector(".modal")
     const resultMessage = document.querySelector(".resultMessage")
+    const scoreX = document.querySelector(".scoreX")
+    const scoreY = document.querySelector(".scoreY")
 
     const createField = () => {
         for(let i=0; i<gameFields.length; i++){
@@ -70,6 +72,7 @@ const displayControl = (() => {
                 // enter win Message
                 resultMessage.textContent = `x wins!`
                 player1.score++
+                displayScore()
                 return true
             }
             else if(
@@ -90,6 +93,7 @@ const displayControl = (() => {
                 // enter win Message
                 resultMessage.textContent = `o wins!`
                 player2.score++
+                displayScore()
                 return true
         }
     }
@@ -125,6 +129,10 @@ const displayControl = (() => {
     resultMessage.addEventListener("click", restartGame)
 
     // function for displaying score
+    const displayScore = () => {
+        scoreX.textContent = player1.score
+        scoreY.textContent = player2.score
+    }
 
     return {createField, addEvents, checkForDraw, deactivateField}
 })();
