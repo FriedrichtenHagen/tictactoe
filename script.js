@@ -37,6 +37,8 @@ const displayControl = (() => {
                         gameBoard.fieldArray[index] = "x"
                         validClickCounter++
                         //field.removeEventListener("click", makeMark)
+                        // start robots move
+                        robotMoves()
                     }
                     else{
                         field.textContent= "o"
@@ -139,6 +141,21 @@ const displayControl = (() => {
         scoreY.textContent = player2.score
     }
 
+    const robotMoves = () => {
+        // random move: choose num between 0 and 8
+        let randomMove = Math.floor(Math.random() * 8) + 1
+        // if illegal, choose again 
+
+        // add move to array
+        gameBoard.fieldArray[randomMove] = "o"
+        // make move in DOM
+        gameFields[randomMove].textContent = "o"
+        gameFields[randomMove].classList.add("filled")
+        // count the move
+        validClickCounter++
+
+    }
+
     return {createField, addEvents, checkForDraw, deactivateField}
 })();
 
@@ -149,6 +166,4 @@ displayControl.addEvents()
 
 
 highlight the winning combination?
-
-add draw message
 */
