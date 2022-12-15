@@ -105,7 +105,12 @@ const displayControl = (() => {
                 }  
             }
         if(drawCounter === 9){
-            alert("draw")
+            // display draw message
+            // activate modal
+            modal.classList.add("modalActive")
+            resultMessage.classList.add("modalActive")
+            // enter win Message
+            resultMessage.textContent = `It's a draw!`
         } 
         return {drawCounter}
     }
@@ -145,7 +150,5 @@ displayControl.addEvents()
 
 highlight the winning combination?
 
-make score counter
-    display in header
 add draw message
 */

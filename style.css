@@ -29,7 +29,6 @@ header{
 .scoreX, .scoreY{
     font-size: inherit;
     margin-left: 5px;
-
 }
 .gameBoard{
     background-color: beige;
@@ -38,6 +37,9 @@ header{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
+}
+.gameBoard:hover{
+    cursor: pointer;
 }
 .gameField{
     border: 1px solid black;
