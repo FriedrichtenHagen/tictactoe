@@ -166,4 +166,7 @@ displayControl.addEvents()
 
 
 highlight the winning combination?
+
+robot random moves
+    bug: clickcounter gets confused
 */
