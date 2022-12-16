@@ -164,5 +164,6 @@ displayControl.addEvents()
 
 highlight the winning combination?
 
-win or draw sends the randomMove function into an endless loop
+create a unbeatable algorithm
+
 */
