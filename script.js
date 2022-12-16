@@ -38,7 +38,7 @@ const displayControl = (() => {
                         validClickCounter++
                         //field.removeEventListener("click", makeMark)
                         // start robots move
-                        robotMoves()
+                        setTimeout(robotMoves, 500);
                     }
                     else{
                         field.textContent= "o"
@@ -143,8 +143,11 @@ const displayControl = (() => {
 
     const robotMoves = () => {
         // random move: choose num between 0 and 8
-        let randomMove = Math.floor(Math.random() * 8) + 1
         // if illegal, choose again 
+        let randomMove = 0 // starter value, will be immediately overwriten
+        do{
+            randomMove = Math.floor(Math.random() * 8) + 1
+        }while(gameBoard.fieldArray[randomMove]!==" ")
 
         // add move to array
         gameBoard.fieldArray[randomMove] = "o"
@@ -156,7 +159,7 @@ const displayControl = (() => {
 
     }
 
-    return {createField, addEvents, checkForDraw, deactivateField}
+    return {createField, addEvents, checkForDraw, deactivateField, validClickCounter}
 })();
 
 displayControl.createField()
@@ -169,4 +172,5 @@ highlight the winning combination?
 
 robot random moves
     bug: clickcounter gets confused
+    exclude currently filled spots from random move
 */
