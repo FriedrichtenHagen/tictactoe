@@ -32,24 +32,15 @@ const displayControl = (() => {
         let makeMark = function(field, index){
             return function curriedFunc(e){
                 if(gameBoard.fieldArray[index]===" "){           
-                    if(validClickCounter%2===0||validClickCounter===0){
-                        field.textContent= "x"
-                        gameBoard.fieldArray[index] = "x"
-                        validClickCounter++
-                        //field.removeEventListener("click", makeMark)
-                        // start robots move
-                        setTimeout(robotMoves, 500);
-                    }
-                    else{
-                        field.textContent= "o"
-                        gameBoard.fieldArray[index] = "o"
-                        validClickCounter++
-                        //field.removeEventListener("click", makeMark)
-                    }
+                    field.textContent= "x"
+                    gameBoard.fieldArray[index] = "x"
+                    //field.removeEventListener("click", makeMark)
                     field.classList.add("filled")
                 }
-                if(!checkForWin()){
-                    checkForDraw()
+                // check for win or draw
+                if(!checkForWin() && !checkForDraw() ){
+                    // start robots move
+                    setTimeout(robotMoves, 500);
                 }
             }
         }
@@ -113,8 +104,8 @@ const displayControl = (() => {
             resultMessage.classList.add("modalActive")
             // enter win Message
             resultMessage.textContent = `It's a draw!`
+            return true
         } 
-        return {drawCounter}
     }
     const deactivateField = () => {
         gameFields.forEach((field, index) => field.removeEventListener("click", makeMark)) //not working
@@ -156,10 +147,13 @@ const displayControl = (() => {
         gameFields[randomMove].classList.add("filled")
         // count the move
         validClickCounter++
-
+        // check for win or draw
+        if(!checkForWin()){
+            checkForDraw()
+        }
     }
 
-    return {createField, addEvents, checkForDraw, deactivateField, validClickCounter}
+    return {createField, addEvents, checkForDraw, checkForWin, deactivateField, validClickCounter}
 })();
 
 displayControl.createField()
@@ -170,7 +164,5 @@ displayControl.addEvents()
 
 highlight the winning combination?
 
-robot random moves
-    bug: clickcounter gets confused
-    exclude currently filled spots from random move
+win or draw sends the randomMove function into an endless loop
 */
