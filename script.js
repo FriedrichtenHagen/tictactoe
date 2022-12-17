@@ -36,11 +36,12 @@ const displayControl = (() => {
                     gameBoard.fieldArray[index] = "x"
                     //field.removeEventListener("click", makeMark)
                     field.classList.add("filled")
-                }
-                // check for win or draw
-                if(!checkForWin() && !checkForDraw() ){
-                    // start robots move
-                    setTimeout(robotMoves, 500);
+                
+                    // check for win or draw
+                    if(!checkForWin() && !checkForDraw() ){
+                        // start robots move
+                        setTimeout(robotMoves, 500);
+                    }
                 }
             }
         }
@@ -165,5 +166,7 @@ displayControl.addEvents()
 highlight the winning combination?
 
 create a unbeatable algorithm
+clicking on filled fields results in additional computer move
+
 
 */
