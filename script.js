@@ -165,8 +165,7 @@ displayControl.addEvents()
 
 highlight the winning combination?
 
-create a unbeatable algorithm
-clicking on filled fields results in additional computer move
+create a unbeatable algorithm using minimax algo
 
 
 */
