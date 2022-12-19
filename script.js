@@ -166,6 +166,6 @@ displayControl.addEvents()
 highlight the winning combination?
 
 create a unbeatable algorithm using minimax algo
-
-
+https://www.neverstopbuilding.com/blog/minimax
+https://www.geeksforgeeks.org/introduction-to-evaluation-function-of-minimax-algorithm-in-game-theory/
 */
