@@ -26,7 +26,7 @@ const displayControl = (() => {
         }
     }
 
-    let validClickCounter = 0;
+
 
     const addEvents = () => {
         let makeMark = function(field, index){
@@ -146,15 +146,21 @@ const displayControl = (() => {
         // make move in DOM
         gameFields[randomMove].textContent = "o"
         gameFields[randomMove].classList.add("filled")
-        // count the move
-        validClickCounter++
+
         // check for win or draw
         if(!checkForWin()){
             checkForDraw()
         }
     }
+    const unbeatableMoves = () => {
 
-    return {createField, addEvents, checkForDraw, checkForWin, deactivateField, validClickCounter}
+
+        // minimax algorithm
+
+
+    }
+
+    return {createField, addEvents, checkForDraw, checkForWin, deactivateField}
 })();
 
 displayControl.createField()
