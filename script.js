@@ -153,7 +153,26 @@ const displayControl = (() => {
         }
     }
     const unbeatableMoves = () => {
-
+        // current Player
+        let activePlayerX = true  
+        // save bestScore in a variable
+        let bestScore = -Infinity
+        // save bestMove in a variable
+        let bestMove;
+        // go through all possible moves
+        for(let i=0; i<gameBoard.fieldArray.length; i++){
+            // check if field is available
+            if(gameBoard.fieldArray[i]===" "){
+                // ai makes its move
+                gameBoard.fieldArray[i]="o"
+                // find best possible move
+                let score = minimax()
+                if(score > bestScore){
+                    bestScore=score
+                    bestMove=i
+                }
+            }
+        }
 
         // minimax algorithm
 
