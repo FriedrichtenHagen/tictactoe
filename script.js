@@ -177,6 +177,10 @@ const displayControl = (() => {
             }
         }
         gameBoard.fieldArray[bestMove]="o"
+        // make move in DOM
+        gameFields[bestMove].textContent = "o"
+        gameFields[bestMove].classList.add("filled")
+
         // minimax algorithm
 
 

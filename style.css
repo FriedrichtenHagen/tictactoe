@@ -50,6 +50,7 @@ header{
 }
 .filled{
     font-size: calc(var(--gameBoardwidth)/4);
+    cursor: default;
 }
 .modal{
     backdrop-filter: blur(10px);
