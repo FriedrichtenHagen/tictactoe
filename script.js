@@ -163,23 +163,29 @@ const displayControl = (() => {
         for(let i=0; i<gameBoard.fieldArray.length; i++){
             // check if field is available
             if(gameBoard.fieldArray[i]===" "){
-                // ai makes its move
+                // ai makes a move, to be evaluated
                 gameBoard.fieldArray[i]="o"
                 // find best possible move
                 let score = minimax()
+                // undo the tested move
+                gameBoard.fieldArray[i]=" "
+                // update bestMove and bestScore
                 if(score > bestScore){
                     bestScore=score
                     bestMove=i
                 }
             }
         }
-
+        gameBoard.fieldArray[bestMove]="o"
         // minimax algorithm
 
 
     }
+    const minimax = () => {
+        return 1
+    }
 
-    return {createField, addEvents, checkForDraw, checkForWin, deactivateField}
+    return {createField, addEvents, checkForDraw, checkForWin, unbeatableMoves}
 })();
 
 displayControl.createField()
