@@ -205,4 +205,7 @@ https://www.neverstopbuilding.com/blog/minimax
 https://www.geeksforgeeks.org/introduction-to-evaluation-function-of-minimax-algorithm-in-game-theory/
 https://www.youtube.com/watch?v=trKjYdBASyQ
 
+
+make the ai play to lose
+invert depth to apply different skill levels
 */
