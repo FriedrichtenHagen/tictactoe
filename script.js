@@ -38,7 +38,7 @@ const displayControl = (() => {
                     field.classList.add("filled")
                 
                     // check for win or draw
-                    if(!checkForWin() && !checkForDraw() ){
+                    if(checkForWin()!=="x" && checkForWin()!=="o" && checkForDraw()!=="draw" ){
                         // start robots move
                         setTimeout(robotMoves, 500);
                     }
@@ -67,7 +67,7 @@ const displayControl = (() => {
                 resultMessage.textContent = `x wins!`
                 player1.score++
                 displayScore()
-                return true
+                return "x"
             }
             else if(
             // horizontal o
@@ -88,7 +88,7 @@ const displayControl = (() => {
                 resultMessage.textContent = `o wins!`
                 player2.score++
                 displayScore()
-                return true
+                return "o"
         }
     }
     const checkForDraw = () => {
@@ -105,7 +105,7 @@ const displayControl = (() => {
             resultMessage.classList.add("modalActive")
             // enter win Message
             resultMessage.textContent = `It's a draw!`
-            return true
+            return "draw"
         } 
     }
     const deactivateField = () => {
@@ -148,7 +148,7 @@ const displayControl = (() => {
         gameFields[randomMove].classList.add("filled")
 
         // check for win or draw
-        if(!checkForWin()){
+        if(checkForWin()!=="o" && checkForWin()!=="x"){
             checkForDraw()
         }
     }
@@ -166,7 +166,7 @@ const displayControl = (() => {
                 // ai makes a move, to be evaluated
                 gameBoard.fieldArray[i]="o"
                 // find best possible move
-                let score = minimax()
+                let score = minimax(0, true)
                 // undo the tested move
                 gameBoard.fieldArray[i]=" "
                 // update bestMove and bestScore
@@ -185,8 +185,16 @@ const displayControl = (() => {
 
 
     }
-    const minimax = () => {
-        return 1
+    let scores = {
+        x : 1,
+        o : -1,
+        tie : 0,
+    }
+    const minimax = (depth, isMinimizing) => {
+        if(checkForDraw&&checkForWin){
+            return 1
+        }
+        
     }
 
     return {createField, addEvents, checkForDraw, checkForWin, unbeatableMoves}
