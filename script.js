@@ -191,8 +191,30 @@ const displayControl = (() => {
         tie : 0,
     }
     const minimax = (depth, isMinimizing) => {
-        if(checkForDraw&&checkForWin){
-            return 1
+        // if leaf node is reached(win, loss or draw) return a corresponding score (1,-1, 0)
+        result = checkForWin()
+        if(result !== null){
+            let score = scores[result]
+            return score
+        }
+        // choose the next move for o
+        if(isMinimizing){
+            for(let i=0; i<gameBoard.fieldArray.length; i++){
+                // check if field is available
+                if(gameBoard.fieldArray[i]===" "){
+                    // ai makes a move, to be evaluated
+                    gameBoard.fieldArray[i]="o"
+                    // find best possible move
+                    let score = minimax(0, false)
+                    // undo the tested move
+                    gameBoard.fieldArray[i]=" "
+                    // update bestMove and bestScore
+                    if(score > bestScore){
+                        bestScore=score
+                        bestMove=i
+                    }
+                }
+            }
         }
         
     }
