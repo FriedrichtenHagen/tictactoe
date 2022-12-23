@@ -90,6 +90,7 @@ const displayControl = (() => {
                 displayScore()
                 return "o"
         }
+        return null // no winner
     }
     const checkForDraw = () => {
         let drawCounter = 0
@@ -153,8 +154,6 @@ const displayControl = (() => {
         }
     }
     const unbeatableMoves = () => {
-        // current Player
-        let activePlayerX = true  
         // save bestScore in a variable
         let bestScore = -Infinity
         // save bestMove in a variable
@@ -165,7 +164,7 @@ const displayControl = (() => {
             if(gameBoard.fieldArray[i]===" "){
                 // ai makes a move, to be evaluated
                 gameBoard.fieldArray[i]="o"
-                // find best possible move
+                // find best possible move (for x, maximizing)
                 let score = minimax(0, true)
                 // undo the tested move
                 gameBoard.fieldArray[i]=" "
@@ -180,46 +179,61 @@ const displayControl = (() => {
         // make move in DOM
         gameFields[bestMove].textContent = "o"
         gameFields[bestMove].classList.add("filled")
-
-        // minimax algorithm
-
-
     }
     let scores = {
         x : 1,
         o : -1,
-        tie : 0,
+        draw : 0,
     }
-    const minimax = (depth, isMinimizing) => {
+    const minimax = (depth, isMaximizing) => {
+        
         // if leaf node is reached(win, loss or draw) return a corresponding score (1,-1, 0)
-        result = checkForWin()
+        let result = checkForWin()
         if(result !== null){
-            let score = scores[result]
-            return score
+            alert(result)
+            return scores[result]
         }
-        // choose the next move for o
-        if(isMinimizing){
+        // choose the next move
+        if(isMaximizing){
+            console.log("max")
+            let bestScore = -Infinity
+            
             for(let i=0; i<gameBoard.fieldArray.length; i++){
                 // check if field is available
                 if(gameBoard.fieldArray[i]===" "){
-                    // ai makes a move, to be evaluated
-                    gameBoard.fieldArray[i]="o"
-                    // find best possible move
-                    let score = minimax(0, false)
+                    // x makes a move, to be evaluated
+                    gameBoard.fieldArray[i]="x"
+                    // find next, best possible move for o
+                    let score = minimax(depth + 1, false)
                     // undo the tested move
                     gameBoard.fieldArray[i]=" "
                     // update bestMove and bestScore
-                    if(score > bestScore){
-                        bestScore=score
-                        bestMove=i
-                    }
+                    score = max(score, bestScore)
                 }
             }
-        }
-        
+            return bestScore
+        } else { // is minimizing
+            console.log("min")
+            let bestScore = Infinity
+            for(let i=0; i<gameBoard.fieldArray.length; i++){
+                // check if field is available
+                if(gameBoard.fieldArray[i]===" "){
+                    // ai(o) makes a move, to be evaluated
+                    gameBoard.fieldArray[i]="o"
+                    // find next, best possible move for x
+                    let score = minimax(depth + 1, true)
+                    // undo the tested move
+                    gameBoard.fieldArray[i]=" "
+                    // update bestMove and bestScore
+                    score = min(score, bestScore)
+                }
+            }
+            return bestScore;
+        }  
+        return "test"
     }
 
-    return {createField, addEvents, checkForDraw, checkForWin, unbeatableMoves}
+    return {createField, addEvents, checkForDraw, checkForWin, unbeatableMoves, minimax}
 })();
 
 displayControl.createField()
