@@ -108,6 +108,7 @@ const displayControl = (() => {
             resultMessage.textContent = `It's a draw!`
             return "draw"
         } 
+        return null
     }
     const deactivateField = () => {
         gameFields.forEach((field, index) => field.removeEventListener("click", makeMark)) //not working
@@ -190,9 +191,13 @@ const displayControl = (() => {
         // if leaf node is reached(win, loss or draw) return a corresponding score (1,-1, 0)
         let result = checkForWin()
         if(result !== null){
-            alert(result)
             return scores[result]
         }
+        let drawCheck = checkForDraw()
+        if(drawCheck !== null){
+            return scores[drawCheck]
+        }
+        
         // choose the next move
         if(isMaximizing){
             console.log("max")
@@ -208,7 +213,7 @@ const displayControl = (() => {
                     // undo the tested move
                     gameBoard.fieldArray[i]=" "
                     // update bestMove and bestScore
-                    score = max(score, bestScore)
+                    bestScore = Math.max(score, bestScore)
                 }
             }
             return bestScore
@@ -225,7 +230,7 @@ const displayControl = (() => {
                     // undo the tested move
                     gameBoard.fieldArray[i]=" "
                     // update bestMove and bestScore
-                    score = min(score, bestScore)
+                    bestScore = Math.min(score, bestScore)
                 }
             }
             return bestScore;
@@ -248,6 +253,9 @@ create a unbeatable algorithm using minimax algo
 https://www.neverstopbuilding.com/blog/minimax
 https://www.geeksforgeeks.org/introduction-to-evaluation-function-of-minimax-algorithm-in-game-theory/
 https://www.youtube.com/watch?v=trKjYdBASyQ
+
+separate the win/lose/draw message from the evaluation function
+this allows the minimax to call these functions, without the results being displayed
 
 
 make the ai play to lose
