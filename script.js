@@ -254,6 +254,9 @@ https://www.geeksforgeeks.org/introduction-to-evaluation-function-of-minimax-alg
 https://www.youtube.com/watch?v=trKjYdBASyQ
 
 separate the win/lose/draw message from the evaluation function
+
+seperate any dom manipulation (and player score changes) from the check for win function
+
 this allows the minimax to call these functions, without the results being displayed
 
 
