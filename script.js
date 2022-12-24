@@ -40,7 +40,8 @@ const displayControl = (() => {
                     // check for win or draw
                     if(checkForWin()!=="x" && checkForWin()!=="o" && checkForDraw()!=="draw" ){
                         // start robots move
-                        setTimeout(robotMoves, 500);
+                        // setTimeout(robotMoves, 500);
+                        unbeatableMoves()
                     }
                 }
             }
@@ -60,13 +61,8 @@ const displayControl = (() => {
             // diagonal x
             (gameBoard.fieldArray[0]==="x"&&gameBoard.fieldArray[4]==="x"&&gameBoard.fieldArray[8]==="x")||
             (gameBoard.fieldArray[6]==="x"&&gameBoard.fieldArray[4]==="x"&&gameBoard.fieldArray[2]==="x")){
-                // activate modal
-                modal.classList.add("modalActive")
-                resultMessage.classList.add("modalActive")
-                // enter win Message
-                resultMessage.textContent = `x wins!`
                 player1.score++
-                displayScore()
+                activateModal("x")
                 return "x"
             }
             else if(
@@ -81,13 +77,8 @@ const displayControl = (() => {
             // diagonal o 
             (gameBoard.fieldArray[0]==="o"&&gameBoard.fieldArray[4]==="o"&&gameBoard.fieldArray[8]==="o")||
             (gameBoard.fieldArray[6]==="o"&&gameBoard.fieldArray[4]==="o"&&gameBoard.fieldArray[2]==="o")){
-                // activate modal
-                modal.classList.add("modalActive")
-                resultMessage.classList.add("modalActive")
-                // enter win Message
-                resultMessage.textContent = `o wins!`
                 player2.score++
-                displayScore()
+                activateModal("o")
                 return "o"
         }
         return null // no winner
@@ -100,18 +91,26 @@ const displayControl = (() => {
                 }  
             }
         if(drawCounter === 9){
-            // display draw message
-            // activate modal
-            modal.classList.add("modalActive")
-            resultMessage.classList.add("modalActive")
-            // enter win Message
-            resultMessage.textContent = `It's a draw!`
+            activateModal("draw")
             return "draw"
         } 
         return null
     }
-    const deactivateField = () => {
-        gameFields.forEach((field, index) => field.removeEventListener("click", makeMark)) //not working
+    const activateModal = (result) => {
+        // activate modal
+        modal.classList.add("modalActive")
+        resultMessage.classList.add("modalActive")
+        // enter win Message
+        if(result==="x"){
+            resultMessage.textContent = `x wins!`
+        }
+        else if(result==="o"){
+            resultMessage.textContent = `o wins!`
+        }
+        else if(result==="draw"){
+            resultMessage.textContent = `It's a draw!`
+        }
+        displayScore()
     }
 
     const restartGame = () => {
