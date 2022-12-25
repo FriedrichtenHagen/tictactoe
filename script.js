@@ -219,7 +219,6 @@ const displayControl = (() => {
         
         // choose the next move
         if(isMaximizing){
-            console.log("max")
             let bestScore = -Infinity
             
             for(let i=0; i<gameBoard.fieldArray.length; i++){
@@ -237,7 +236,6 @@ const displayControl = (() => {
             }
             return bestScore
         } else { // is minimizing
-            console.log("min")
             let bestScore = Infinity
             for(let i=0; i<gameBoard.fieldArray.length; i++){
                 // check if field is available
