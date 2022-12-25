@@ -265,22 +265,8 @@ displayControl.addEvents()
 
 /* 
 
-
+create mode selector: random, depth varied difficulty, unbeatable
 highlight the winning combination?
-
-create a unbeatable algorithm using minimax algo
-https://www.neverstopbuilding.com/blog/minimax
-https://www.geeksforgeeks.org/introduction-to-evaluation-function-of-minimax-algorithm-in-game-theory/
-https://www.youtube.com/watch?v=trKjYdBASyQ
-
-separate the win/lose/draw message from the evaluation function
-
-seperate any dom manipulation (and player score changes) from the check for win function
-
-this allows the minimax to call these functions, without the results being displayed
-
-the algo seems to optimize for a loss of o???
-
 make the ai play to lose
 invert depth to apply different skill levels
 */
