@@ -38,11 +38,20 @@ const displayControl = (() => {
                     field.classList.add("filled")
                 
                     // check for win or draw
-                    if(checkForWin()!=="x" && checkForWin()!=="o" && checkForDraw()!=="draw" ){
+                    if(checkForWin()==="x"){
+                        activateModal("x")
+                    }
+                    else if(checkForWin()==="o"){
+                        activateModal("o")
+                    }
+                    else if(checkForDraw()==="draw"){
+                        activateModal("draw")  
+                    }
+                    else{
                         // start robots move
                         // setTimeout(robotMoves, 500);
                         unbeatableMoves()
-                    }
+                    }                    
                 }
             }
         }
@@ -62,7 +71,7 @@ const displayControl = (() => {
             (gameBoard.fieldArray[0]==="x"&&gameBoard.fieldArray[4]==="x"&&gameBoard.fieldArray[8]==="x")||
             (gameBoard.fieldArray[6]==="x"&&gameBoard.fieldArray[4]==="x"&&gameBoard.fieldArray[2]==="x")){
                 player1.score++
-                activateModal("x")
+
                 return "x"
             }
             else if(
@@ -78,7 +87,6 @@ const displayControl = (() => {
             (gameBoard.fieldArray[0]==="o"&&gameBoard.fieldArray[4]==="o"&&gameBoard.fieldArray[8]==="o")||
             (gameBoard.fieldArray[6]==="o"&&gameBoard.fieldArray[4]==="o"&&gameBoard.fieldArray[2]==="o")){
                 player2.score++
-                activateModal("o")
                 return "o"
         }
         return null // no winner
@@ -91,7 +99,6 @@ const displayControl = (() => {
                 }  
             }
         if(drawCounter === 9){
-            activateModal("draw")
             return "draw"
         } 
         return null
@@ -179,6 +186,9 @@ const displayControl = (() => {
         // make move in DOM
         gameFields[bestMove].textContent = "o"
         gameFields[bestMove].classList.add("filled")
+        // check for win + activate modal
+
+        //...
     }
     let scores = {
         x : 1,
