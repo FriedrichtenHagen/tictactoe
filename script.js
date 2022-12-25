@@ -187,8 +187,16 @@ const displayControl = (() => {
         gameFields[bestMove].textContent = "o"
         gameFields[bestMove].classList.add("filled")
         // check for win + activate modal
-
-        //...
+        if(checkForWin()==="x"){
+            activateModal("x")
+        }
+        else if(checkForWin()==="o"){
+            activateModal("o")
+        }
+        else if(checkForDraw()==="draw"){
+            activateModal("draw")  
+        }
+    
     }
     let scores = {
         x : 1,
@@ -269,6 +277,7 @@ seperate any dom manipulation (and player score changes) from the check for win 
 
 this allows the minimax to call these functions, without the results being displayed
 
+the algo seems to optimize for a loss of o???
 
 make the ai play to lose
 invert depth to apply different skill levels
