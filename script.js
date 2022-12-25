@@ -70,7 +70,7 @@ const displayControl = (() => {
             // diagonal x
             (gameBoard.fieldArray[0]==="x"&&gameBoard.fieldArray[4]==="x"&&gameBoard.fieldArray[8]==="x")||
             (gameBoard.fieldArray[6]==="x"&&gameBoard.fieldArray[4]==="x"&&gameBoard.fieldArray[2]==="x")){
-                player1.score++
+                
 
                 return "x"
             }
@@ -86,7 +86,7 @@ const displayControl = (() => {
             // diagonal o 
             (gameBoard.fieldArray[0]==="o"&&gameBoard.fieldArray[4]==="o"&&gameBoard.fieldArray[8]==="o")||
             (gameBoard.fieldArray[6]==="o"&&gameBoard.fieldArray[4]==="o"&&gameBoard.fieldArray[2]==="o")){
-                player2.score++
+               
                 return "o"
         }
         return null // no winner
@@ -110,9 +110,11 @@ const displayControl = (() => {
         // enter win Message
         if(result==="x"){
             resultMessage.textContent = `x wins!`
+            player1.score++
         }
         else if(result==="o"){
             resultMessage.textContent = `o wins!`
+            player2.score++
         }
         else if(result==="draw"){
             resultMessage.textContent = `It's a draw!`
@@ -162,7 +164,7 @@ const displayControl = (() => {
     }
     const unbeatableMoves = () => {
         // save bestScore in a variable
-        let bestScore = -Infinity
+        let bestScore = Infinity
         // save bestMove in a variable
         let bestMove;
         // go through all possible moves
@@ -176,7 +178,7 @@ const displayControl = (() => {
                 // undo the tested move
                 gameBoard.fieldArray[i]=" "
                 // update bestMove and bestScore
-                if(score > bestScore){
+                if(score < bestScore){
                     bestScore=score
                     bestMove=i
                 }
