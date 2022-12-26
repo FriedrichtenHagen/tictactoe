@@ -1,8 +1,10 @@
+// object that represents the board
 const gameBoard = (() => {
     const fieldArray = [" "," "," "," "," "," "," "," "," "];
     return {fieldArray}
 })();
 
+// factory function that creates the players
 const player = (name) => {
     this.name = name;
     this.score = 0;
@@ -11,7 +13,8 @@ const player = (name) => {
 const player1 = player("Fred");
 const player2 = player("Johannes");
 
-
+// this private function contains all functions relating to game logic and DOM manipulation
+// this demonstrates the concept of closure: every function retains the scope of its creation (displayControl) and can only be called outside of this function, if we return it
 const displayControl = (() => {
     const gameFields = document.querySelectorAll(".gameField")
     const modal = document.querySelector(".modal")
@@ -271,4 +274,6 @@ create mode selector: random, depth varied difficulty, unbeatable
 highlight the winning combination?
 make the ai play to lose
 invert depth to apply different skill levels
+
+style the select element
 */
