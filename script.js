@@ -72,9 +72,8 @@ const displayControl = (() => {
             // diagonal x
             (gameBoard.fieldArray[0]==="x"&&gameBoard.fieldArray[4]==="x"&&gameBoard.fieldArray[8]==="x")||
             (gameBoard.fieldArray[6]==="x"&&gameBoard.fieldArray[4]==="x"&&gameBoard.fieldArray[2]==="x")){
-                
-
-                return "x"
+            
+            return "x"
             }
             else if(
             // horizontal o
@@ -89,7 +88,7 @@ const displayControl = (() => {
             (gameBoard.fieldArray[0]==="o"&&gameBoard.fieldArray[4]==="o"&&gameBoard.fieldArray[8]==="o")||
             (gameBoard.fieldArray[6]==="o"&&gameBoard.fieldArray[4]==="o"&&gameBoard.fieldArray[2]==="o")){
                
-                return "o"
+            return "o"
         }
         return null // no winner
     }
@@ -109,7 +108,7 @@ const displayControl = (() => {
         // activate modal
         modal.classList.add("modalActive")
         resultMessage.classList.add("modalActive")
-        // enter win Message
+        // enter win/loss/draw message
         if(result==="x"){
             resultMessage.textContent = `x wins!`
             player1.score++
@@ -144,11 +143,11 @@ const displayControl = (() => {
         scoreX.textContent = player1.score
         scoreY.textContent = player2.score
     }
-
+    // computer plays random moves
     const robotMoves = () => {
         // random move: choose num between 0 and 8
         // if illegal, choose again 
-        let randomMove = 0 // starter value, will be immediately overwriten
+        let randomMove; 
         do{
             randomMove = Math.floor(Math.random() * 8) + 1
         }while(gameBoard.fieldArray[randomMove]!==" ")
@@ -170,6 +169,7 @@ const displayControl = (() => {
             activateModal("draw")  
         }
     }
+    // computer plays optimally
     const unbeatableMoves = () => {
         // save bestScore in a variable
         let bestScore = Infinity
@@ -179,7 +179,7 @@ const displayControl = (() => {
         for(let i=0; i<gameBoard.fieldArray.length; i++){
             // check if field is available
             if(gameBoard.fieldArray[i]===" "){
-                // ai makes a move, to be evaluated
+                // computer makes a move, to be evaluated
                 gameBoard.fieldArray[i]="o"
                 // find best possible move (for x, maximizing)
                 let score = minimax(0, true)
@@ -206,16 +206,15 @@ const displayControl = (() => {
         else if(checkForDraw()==="draw"){
             activateModal("draw")  
         }
-    
     }
+    // translate the game results into minimax scores
     let scores = {
         x : 1,
         o : -1,
         draw : 0,
     }
     const minimax = (depth, isMaximizing) => {
-        
-        // if leaf node is reached(win, loss or draw) return a corresponding score (1,-1, 0)
+        // terminating condition: if leaf node is reached(win, loss or draw) return a corresponding score (1,-1, 0)
         let result = checkForWin()
         if(result !== null){
             return scores[result]
@@ -260,7 +259,6 @@ const displayControl = (() => {
             }
             return bestScore;
         }  
-        return "test"
     }
 
     return {addEvents, checkForDraw, checkForWin, unbeatableMoves, minimax}
