@@ -166,8 +166,14 @@ const displayControl = (() => {
         gameFields[randomMove].classList.add("filled")
 
         // check for win or draw
-        if(checkForWin()!=="o" && checkForWin()!=="x"){
-            checkForDraw()
+        if(checkForWin()==="x"){
+            activateModal("x")
+        }
+        else if(checkForWin()==="o"){
+            activateModal("o")
+        }
+        else if(checkForDraw()==="draw"){
+            activateModal("draw")  
         }
     }
     const unbeatableMoves = () => {
