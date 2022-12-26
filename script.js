@@ -13,8 +13,8 @@ const player = (name) => {
 const player1 = player("Fred");
 const player2 = player("Johannes");
 
-// this private function contains all functions relating to game logic and DOM manipulation
-// this demonstrates the concept of closure: every function retains the scope of its creation (displayControl) and can only be called outside of this function, if we return it
+// this private module contains all functions relating to game logic and DOM manipulation
+// this demonstrates the concept of closure: every function retains the scope of its creation (displayControl) and can only be called outside of this function if we return it
 const displayControl = (() => {
     const gameFields = document.querySelectorAll(".gameField")
     const modal = document.querySelector(".modal")
@@ -23,12 +23,12 @@ const displayControl = (() => {
     const scoreY = document.querySelector(".scoreY")
 
     const addEvents = () => {
+        // make a "x" on the users click
         let makeMark = function(field, index){
             return function curriedFunc(e){
                 if(gameBoard.fieldArray[index]===" "){           
                     field.textContent= "x"
                     gameBoard.fieldArray[index] = "x"
-                    //field.removeEventListener("click", makeMark)
                     field.classList.add("filled")
                 
                     // check for win or draw
@@ -276,4 +276,5 @@ make the ai play to lose
 invert depth to apply different skill levels
 
 style the select element
+is the curried function necessary?
 */
