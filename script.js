@@ -1,7 +1,6 @@
 const gameBoard = (() => {
     const fieldArray = [" "," "," "," "," "," "," "," "," "];
-    const gameActive = true
-    return {fieldArray, gameActive}
+    return {fieldArray}
 })();
 
 const player = (name) => {
@@ -19,14 +18,6 @@ const displayControl = (() => {
     const resultMessage = document.querySelector(".resultMessage")
     const scoreX = document.querySelector(".scoreX")
     const scoreY = document.querySelector(".scoreY")
-
-    const createField = () => {
-        for(let i=0; i<gameFields.length; i++){
-            gameFields[i].textContent = gameBoard.fieldArray[i]
-        }
-    }
-
-
 
     const addEvents = () => {
         let makeMark = function(field, index){
@@ -269,10 +260,9 @@ const displayControl = (() => {
         return "test"
     }
 
-    return {createField, addEvents, checkForDraw, checkForWin, unbeatableMoves, minimax}
+    return {addEvents, checkForDraw, checkForWin, unbeatableMoves, minimax}
 })();
 
-displayControl.createField()
 displayControl.addEvents()
 
 /* 
