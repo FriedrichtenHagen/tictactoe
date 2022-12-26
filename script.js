@@ -48,9 +48,17 @@ const displayControl = (() => {
                         activateModal("draw")  
                     }
                     else{
-                        // start robots move
-                        // setTimeout(robotMoves, 500);
-                        unbeatableMoves()
+                        // decide between impossible mode and easy mode
+                        let mode = document.querySelector("#mode")
+                        if(mode.value === "easy"){
+                            // random computer move
+                            setTimeout(robotMoves, 500);
+                        }
+                        else if(mode.value === "impossible"){
+                            // optimal computer move
+                            unbeatableMoves()
+                        }
+
                     }                    
                 }
             }
