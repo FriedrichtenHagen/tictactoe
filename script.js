@@ -50,7 +50,7 @@ const displayControl = (() => {
                         }
                         else if(mode.value === "impossible"){
                             // optimal computer move
-                            unbeatableMoves()
+                            setTimeout(unbeatableMoves, 500);
                         }
 
                     }                    
