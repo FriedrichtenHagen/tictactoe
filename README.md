@@ -20,6 +20,6 @@ Using the minimax algorithm it is possible for the computer to recursively evalu
 
 ## Lessons learned: 
 This project was a great exercise in javascript. I was able to use my existing knowledge about DOM manipulation. 
-A module function was used to keep all internal functions private.
+A module was used to keep all internal functions private.
 Objects for the board and the players are used to store information. 
 Furthermore, I used the recursive minimax algorithm, which was a fun challenge.
