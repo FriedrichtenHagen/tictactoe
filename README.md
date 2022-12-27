@@ -1,5 +1,5 @@
 # TicTacToe Game
-This is a tictactoe game with to levels of difficulty: easy and impossible. 
+This is a tictactoe game with two levels of difficulty: easy and impossible. 
 The impossible mode was achieved using the recursive minimax algorithm. 
 The easy mode is random. 
 
@@ -19,4 +19,7 @@ Using the minimax algorithm it is possible for the computer to recursively evalu
 
 
 ## Lessons learned: 
-This project was a great exercise in javascript. I was able to use my existing knowledge about DOM manipulation. Furthermore, I used the recursive minimax algorithm to evaluate all possible options of the game, which was a fun challenge. 
+This project was a great exercise in javascript. I was able to use my existing knowledge about DOM manipulation. 
+A module function was used to keep all internal functions private.
+Objects for the board and the players are used to store information. 
+Furthermore, I used the recursive minimax algorithm, which was a fun challenge.
