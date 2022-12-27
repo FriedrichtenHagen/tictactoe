@@ -5,7 +5,8 @@ The easy mode is random.
 
 Here is a link to a live demo: https://friedrichtenhagen.github.io/tictactoe/
 
-Insert image here: ...
+Screenshot here: 
+![the board](/Screenshot.png)
 
 
 ## How it's made: 
@@ -15,7 +16,7 @@ Insert image here: ...
 I started with letting the computer make random moves. This is far too easy to beat for most humans, so i researched the optimal way of playing the game. 
 Using the minimax algorithm it is possible for the computer to recursively evaluate all future moves. 
 
-## Optimizations: 
 
 
 ## Lessons learned: 
+This project was a great exercise in javascript. I was able to use my existing knowledge about DOM manipulation. Furthermore, I used the recursive minimax algorithm to evaluate all possible options of the game, which was a fun challenge. 
